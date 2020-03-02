@@ -1,5 +1,6 @@
 import React from 'react';
 import ImageContainer from './containers/ImageContainer'
+import Navbar from './components/Navbar'
 
 const API = "https://pixabay.com/api/?key=15410961-50b6ae9ee64c3859d407a7eaa&q=nature&image_type=photo&pretty=true"
 
@@ -22,7 +23,10 @@ class MainPage extends React.Component {
     render() { 
         // console.log(this.state.images)
         return ( 
-            <ImageContainer images={this.state.images}/>
+            <Fragment>
+                <ImageContainer images={this.state.images}/>
+                <Navbar/>
+            </Fragment>
          );
     }
 }
