@@ -4,7 +4,7 @@ import CardImage from "../components/CardImage";
 class ImageContainer extends React.Component {
 
     renderAllimages(){
-        return this.props.images.map(image => <CardImage img={image.largeImageURL}/>)
+        return this.props.images.map(image => <CardImage key={image.id} img={image.largeImageURL}/>)
     }
     render() { 
 
