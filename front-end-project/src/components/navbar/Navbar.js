@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import SignIn from './SignIn'
-import { Route } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
+
 
 class Navbar extends React.Component {
 
@@ -8,8 +9,11 @@ class Navbar extends React.Component {
         return ( 
    
             <Fragment>
-                
-                <Route exact path="/" component={() => <SignIn signIn={this.props.signIn}/>}/>
+                <div>
+                    <Link to="sign-in">Sign In</Link>
+                    <Route exact path="/sign-in" component={() => <SignIn signIn={this.props.signIn}/>}/>
+                    {/* <Link to="sign-in">Sign In</Link> */}
+                </div>
             </Fragment>
                 
             
