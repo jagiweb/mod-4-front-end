@@ -14,9 +14,11 @@ class MainPage extends React.Component {
          }
     }
 
-    signIn = (username, token) => {
+    signIn = (username, token, user) => {
+        console.log(user)
         this.setState({
-            username
+            username,
+            user
         })
         localStorage.token = token
     }
@@ -35,6 +37,7 @@ class MainPage extends React.Component {
           // Pass the username and token the server sends back to signIn
             .then(json => this.signIn(json.username, json.token))
             // .then(json => console.log(json))
+            
         }
         API.getPictures()
             .then(images => this.setState({
@@ -54,10 +57,11 @@ class MainPage extends React.Component {
 
     render() { 
         // console.log(this.state.images)
+        const {user, id, username, images} = this.state
         return ( 
             <Fragment>
-                <Navbar signIn={this.signIn} signUp={this.signUp} username={this.state.username} signOut={this.signOut}/>
-                <ImageContainer images={this.state.images}/>
+                <Navbar editProfile={this.editProfile} user={user} id={id} signIn={this.signIn} signUp={this.signUp} username={username} signOut={this.signOut}/>
+                <ImageContainer images={images}/>
             </Fragment>
          );
     }
