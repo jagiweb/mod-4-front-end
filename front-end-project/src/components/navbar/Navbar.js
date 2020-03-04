@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react'
 import SignIn from './SignIn'
-import { Route } from 'react-router-dom'
 import SideDrawer from '../SideDrawer/SideDrawer';
 import Backdrop from '../Backdrop/Backdrop';
 import Toolbar from '../Toolbar/Toolbar';
+import { Route, Link } from 'react-router-dom'
+
 
 class Navbar extends React.Component {
 
@@ -13,34 +14,36 @@ class Navbar extends React.Component {
 
     drawToggleClickHandler = () => {
         this.setState((prevstate) => {
-            return {sideDraweropen: !prevstate.sideDraweropen}
+            return { sideDraweropen: !prevstate.sideDraweropen }
 
         })
     }
 
     backdropClickHandler = () => {
-        this.setState({sideDraweropen: false})
+        this.setState({ sideDraweropen: false })
     }
 
-    render() { 
+    render() {
         
-        let backdrop
+        let backdrop 
 
         if (this.state.sideDraweropen) {
-            
-            backdrop = (
-							<Backdrop backdropClickHandler={this.backdropClickHandler} />
-						);
+            backdrop = <Backdrop backdropClickHandler={this.backdropClickHandler} />
         }
         return (
-				<Fragment>
-					<Toolbar drawToggleClickHandler={this.drawToggleClickHandler} />
-                    <SideDrawer show={this.state.sideDraweropen}/>
-						{backdrop}
-
-					<Route exact path="/sign-in" component={() => <SignIn signIn={this.props.signIn} />}/>
-				</Fragment>
-				);
+   
+            <Fragment>
+                <div>
+                    <Link to="sign-in">Sign In</Link>
+                    <Route exact path="/sign-in" component={() => <SignIn signIn={this.props.signIn} />} />
+                    <Toolbar drawToggleClickHandler={this.drawToggleClickHandler} />
+                    <SideDrawer show={this.state.sideDraweropen} /> 
+                    {backdrop}
+                    
+                </div>
+            </Fragment>
+        );
+        // }
     }
 }
  

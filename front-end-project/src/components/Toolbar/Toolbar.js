@@ -10,9 +10,9 @@ const Toolbar = props => {
 					<div>
 						<DrawerToggleButton click={props.drawToggleClickHandler} />
 					</div>
-					<div className="toolbar_logo">
+					{/* <div className="toolbar_logo">
 						<a href="/">The Logo</a>
-					</div>
+					</div> */}
 					<div className="spacer" />
 
 					<div className="toolbar_navigtion-items"></div>
