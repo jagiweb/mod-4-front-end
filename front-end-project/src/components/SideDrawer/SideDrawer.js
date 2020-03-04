@@ -10,8 +10,17 @@ const SideDrawer = props => {
 	}
     return (
 			<nav className={drawerClasses}>
-				<Link to="/">Home</Link>
-				<Link to="sign-in">Sign In</Link>
+				<div className="side-drawer-button">
+					<Link to="/">
+						<button>Home</button>
+					</Link>
+					<Link to="sign-in">
+						<button>Sign in</button>
+					</Link>
+					<Link to="sign-up">
+						<button>Sign up</button>
+					</Link>
+				</div>
 			</nav>
 		);
 }
