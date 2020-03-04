@@ -4,7 +4,7 @@ import SideDrawer from '../SideDrawer/SideDrawer';
 import Backdrop from '../Backdrop/Backdrop';
 import Toolbar from '../Toolbar/Toolbar';
 import SignUp from './SignUp'
-import { Route, Link } from 'react-router-dom'
+import { Route,} from 'react-router-dom'
 
 
 class Navbar extends React.Component {
@@ -68,20 +68,15 @@ class Navbar extends React.Component {
         const { username, signOut, signUp, signIn } = this.props
         return (
 					<Fragment>
-						<div>
-							<p> {username} </p>
-							{/* <Link to="/">Home</Link>
-							<Link to="sign-in">Sign In</Link> */}
+						
+							{/* <p> {username} </p> */}
+							
 							<div>
 								{this.props.username ? (
 									<button onClick={signOut}>Log Out</button>
 								) : null}
 							</div>
-							<Route
-								exact
-								path="/sign-in"
-								component={() => <SignIn signIn={signIn} />}
-							/>
+							
 
 							<Route
 								exact
@@ -102,7 +97,7 @@ class Navbar extends React.Component {
 								signOut={signOut}
 							/>
 							{backdrop}
-						</div>
+						
 					</Fragment>
 				);
         
