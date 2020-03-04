@@ -69,7 +69,7 @@ class Navbar extends React.Component {
         return (
 					<Fragment>
 						<div>
-							<p> {username} </p>
+							{/* <p> {username} </p> */}
 							{/* <Link to="/">Home</Link>
 							<Link to="sign-in">Sign In</Link> */}
 							<div>
