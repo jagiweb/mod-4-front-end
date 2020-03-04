@@ -25,7 +25,7 @@ class MainPage extends React.Component {
         // console.log(this.state.images)
         return ( 
             <Fragment>
-                {/* <Navbar/> */}
+                <Navbar/>
                 <ImageContainer images={this.state.images}/>
             </Fragment>
          );

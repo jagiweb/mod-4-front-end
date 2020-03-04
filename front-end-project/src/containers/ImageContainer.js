@@ -13,7 +13,6 @@ class ImageContainer extends React.Component {
 
     render() {  
 
-        // console.log(this.props.images)
         return ( 
             <div className='grid'>
                 {this.renderAllimages()}

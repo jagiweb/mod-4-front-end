@@ -7,7 +7,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, auto);
   grid-auto-rows: 35vh;
-  /* overflow: hidden; */
+  overflow: scroll;
 }
 
 .item img {
