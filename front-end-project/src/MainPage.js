@@ -9,16 +9,32 @@ class MainPage extends React.Component {
     constructor() {
         super();
         this.state = { 
-            images: []
+            images: [],
+            username: null
          }
     }
 
+    signIn = (username, token) => {
+        this.setState({
+            username
+        })
+        localStorage.token = token
+    }
+
+    signUp = (username, token) => {
+        this.setState({
+            username
+        })
+        localStorage.token = token
+    }
+
     componentDidMount() {
-        // If we have a token in localStorage, attempt to use it to validate ourselves against the server
+        // // If we have a token in localStorage, attempt to use it to validate ourselves against the server
         if (localStorage.token) {
           API.validate(localStorage.token)
           // Pass the username and token the server sends back to signIn
             .then(json => this.signIn(json.username, json.token))
+            // .then(json => console.log(json))
         }
         API.getPictures()
             .then(images => this.setState({
@@ -26,25 +42,8 @@ class MainPage extends React.Component {
             }))
       }
 
-
-      signOut = () => {
-        this.setState({
-          username: null
-        })
-        localStorage.removeItem("token")
-      }
     
-      signIn = (username, token) => {
-        // Set the state of username to be the username the server sent back
-        this.setState({
-          username
-        })
-        // Store the token the server sent back in localStorage, which is on the client-side
-
-        localStorage.token = token
-      }
-    
-      // Sign the user out by setting the username to null and removing the token key from localStorage
+    //   // Sign the user out by setting the username to null and removing the token key from localStorage
       signOut = () => {
         this.setState({
           username: null
@@ -57,7 +56,7 @@ class MainPage extends React.Component {
         // console.log(this.state.images)
         return ( 
             <Fragment>
-                <Navbar signIn={this.signIn}/>
+                <Navbar signIn={this.signIn} signUp={this.signUp} username={this.state.username} signOut={this.signOut}/>
                 <ImageContainer images={this.state.images}/>
             </Fragment>
          );
