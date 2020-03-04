@@ -1,9 +1,8 @@
-import React, { Fragment }  from 'react';
-import ImageContainer from './containers/ImageContainer'
-import Navbar from './components/navbar/Navbar'
-import API from './Api'
+import React, { Fragment } from 'react';
+import ImageContainer from './containers/ImageContainer';
+import Navbar from './components/navbar/Navbar';
+import API from './Api';
 // import Api from './Api';
-
 
 class MainPage extends React.Component {
     constructor() {
@@ -23,12 +22,6 @@ class MainPage extends React.Component {
         localStorage.token = token
     }
 
-    signUp = (username, token) => {
-        this.setState({
-            username
-        })
-        localStorage.token = token
-    }
 
     componentDidMount() {
         // // If we have a token in localStorage, attempt to use it to validate ourselves against the server
@@ -45,15 +38,21 @@ class MainPage extends React.Component {
             }))
       }
 
-    
-    //   // Sign the user out by setting the username to null and removing the token key from localStorage
-      signOut = () => {
-        this.setState({
-          username: null
-        })
-        localStorage.removeItem("token")
-      }
+	signUp = (username, token) => {
+		this.setState({
+			username
+		});
+		localStorage.token = token;
+	};
 
+
+	//   // Sign the user out by setting the username to null and removing the token key from localStorage
+	signOut = () => {
+		this.setState({
+			username: null
+		});
+		localStorage.removeItem('token');
+	};
 
     render() { 
         // console.log(this.state.images)
@@ -66,5 +65,5 @@ class MainPage extends React.Component {
          );
     }
 }
- 
+
 export default MainPage;

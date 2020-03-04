@@ -1,0 +1,23 @@
+#root{
+  margin:0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+}
+
+.grid {
+  /* height: 100%; */
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-auto-rows: 33.33vh;
+  /* overflow: scroll; */
+}
+
+.item img {
+  height: 100%;
+  width: 100%;
+}
+
+
