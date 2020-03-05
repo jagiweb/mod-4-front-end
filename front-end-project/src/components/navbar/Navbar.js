@@ -9,36 +9,14 @@ import { Route,} from 'react-router-dom'
 
 class Navbar extends React.Component {
 
-    // render() { 
-    //     const {username, signOut, signUp, signIn} = this.props
-    //     return ( 
-            
-    //         <Fragment>
-
-    //             <div>
-    //                 <p> {username} </p>
-    //                 <Link to="/">Home</Link>
-    //                 -
-    //                 <Link to="sign-in">Sign In</Link>
-    //                 -
-    //                 <Link to="sign-up">Sign Up</Link>
-    //                 -
-    //                 <div>{this.props.username ? <button onClick={signOut}>Log Out</button> : null}</div>
-    //                 <Route exact path="/sign-in" component={() => <SignIn signIn={signIn}/>}/>
-
-    //                 <Route exact path="/sign-up" component={() => <SignUp signUp={signUp}/>}/>
-
-    //             </div>
-    //         </Fragment>
-                
-        //  );
+    
     state = {
         sideDraweropen: false
     }
 
     drawToggleClickHandler = () => {
-        this.setState((prevstate) => {
-            return { sideDraweropen: !prevstate.sideDraweropen }
+        this.setState({
+            sideDraweropen: !this.state.sideDraweropen 
 
         })
     }
@@ -53,7 +31,7 @@ class Navbar extends React.Component {
         
     render() {
             
-        // return (
+        
         let backdrop 
 
         if (this.state.sideDraweropen) {
@@ -68,36 +46,35 @@ class Navbar extends React.Component {
         const { username, signOut, signUp, signIn } = this.props
         return (
 					<Fragment>
-						
-							{/* <p> {username} </p> */}
-							
-							<div>
-								{this.props.username ? (
-									<button onClick={signOut}>Log Out</button>
-								) : null}
-							</div>
-							
+						{/* <p> {username} </p> */}
 
-							<Route
-								exact
-								path="/sign-up"
-								component={() => <SignUp signUp={signUp} />}
-							/>
-							<Route
-								exact
-								path="/sign-in"
-								component={() => <SignIn signIn={this.props.signIn} />}
-							/>
-							<Toolbar drawToggleClickHandler={this.drawToggleClickHandler} />
-							<SideDrawer
-								show={this.state.sideDraweropen}
-								signIn={signIn}
-								signUp={signUp}
-								username={username}
-								signOut={signOut}
-							/>
-							{backdrop}
-						
+						<div>
+							{this.props.username ? (
+								<button onClick={signOut}>Log Out</button>
+							) : null}
+						</div>
+
+						<Route
+							exact
+							path="/sign-up"
+							component={() => <SignUp signUp={signUp} />}
+						/>
+						<Route
+							exact
+							path="/sign-in"
+							component={() => <SignIn signIn={this.props.signIn} />}
+						/>
+						<Toolbar drawToggleClickHandler={this.drawToggleClickHandler} />
+						<SideDrawer
+							close={this.prevstate}
+							show={this.state.sideDraweropen}
+							signIn={signIn}
+							signUp={signUp}
+							username={username}
+							signOut={signOut}
+							toggleShowSideDrawer={this.drawToggleClickHandler}
+						/>
+						{backdrop}
 					</Fragment>
 				);
         

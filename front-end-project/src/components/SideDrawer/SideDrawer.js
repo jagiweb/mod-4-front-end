@@ -11,14 +11,19 @@ const SideDrawer = props => {
     return (
 			<nav className={drawerClasses}>
 				<div className="side-drawer-button">
-					<Link to="/">
-						<button>Home</button>
+					{/* <h1>hello</h1> */}
+
+					<button className="fas fa Times" onClick={props.toggleShowSideDrawer}>
+						close
+					</button>
+					<Link to="/" className="fas fa-home">
+						Home
 					</Link>
-					<Link to="sign-in">
-						<button>Sign in</button>
+					<Link to="sign-in" className="fas fa-sign-in-alt">
+						Sign in
 					</Link>
-					<Link to="sign-up">
-						<button>Sign up</button>
+					<Link to="sign-up" className="fas fa-user-plus">
+						Sign up
 					</Link>
 				</div>
 			</nav>
@@ -26,3 +31,4 @@ const SideDrawer = props => {
 }
 
 export default SideDrawer;
+
