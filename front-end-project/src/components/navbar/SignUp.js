@@ -10,7 +10,8 @@ class SignUp extends React.Component {
       name: "",
       lastname: "",
       email: "",
-      password: ""
+      password: "",
+      img_url: "https://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
     }
   }
 
@@ -44,6 +45,9 @@ class SignUp extends React.Component {
         <label>Password:</label>
         <input type="password" name="password" onChange={this.handleChange}/><br/>
 
+        <label>Profile Picture:</label>
+        <input type="text" name="img_url" placeholder="Image Url" onChange={this.handleChange}/><br/>
+        
         <input type="submit" value="Sign Up"/>
       </form>
     )

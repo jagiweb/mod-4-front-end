@@ -5,20 +5,38 @@ import API from './Api';
 // import Api from './Api';
 
 class MainPage extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			images: [],
-			username: null
-		};
-	}
+    constructor() {
+        super();
+        this.state = { 
+            images: [],
+            username: null
+         }
+    }
 
-	signIn = (username, token) => {
-		this.setState({
-			username
-		});
-		localStorage.token = token;
-	};
+    signIn = (username, token, user) => {
+        console.log(user)
+        this.setState({
+            username,
+            user
+        })
+        localStorage.token = token
+    }
+
+
+    componentDidMount() {
+        // // If we have a token in localStorage, attempt to use it to validate ourselves against the server
+        if (localStorage.token) {
+          API.validate(localStorage.token)
+          // Pass the username and token the server sends back to signIn
+            .then(json => this.signIn(json.username, json.token))
+            // .then(json => console.log(json))
+            
+        }
+        API.getPictures()
+            .then(images => this.setState({
+                images: images.hits
+            }))
+      }
 
 	signUp = (username, token) => {
 		this.setState({
@@ -27,20 +45,6 @@ class MainPage extends React.Component {
 		localStorage.token = token;
 	};
 
-	componentDidMount() {
-		// // If we have a token in localStorage, attempt to use it to validate ourselves against the server
-		if (localStorage.token) {
-			API.validate(localStorage.token)
-				// Pass the username and token the server sends back to signIn
-				.then(json => this.signIn(json.username, json.token));
-			// .then(json => console.log(json))
-		}
-		API.getPictures().then(images =>
-			this.setState({
-				images: images.hits
-			})
-		);
-	}
 
 	//   // Sign the user out by setting the username to null and removing the token key from localStorage
 	signOut = () => {
@@ -50,20 +54,16 @@ class MainPage extends React.Component {
 		localStorage.removeItem('token');
 	};
 
-	render() {
-		// console.log(this.state.images)
-		return (
-			<Fragment>
-				<Navbar
-					signIn={this.signIn}
-					signUp={this.signUp}
-					username={this.state.username}
-					signOut={this.signOut}
-				/>
-				<ImageContainer images={this.state.images} />
-			</Fragment>
-		);
-	}
+    render() { 
+        // console.log(this.state.images)
+        const {user, id, username, images} = this.state
+        return ( 
+            <Fragment>
+                <Navbar editProfile={this.editProfile} user={user} id={id} signIn={this.signIn} signUp={this.signUp} username={username} signOut={this.signOut}/>
+                <ImageContainer images={images}/>
+            </Fragment>
+         );
+    }
 }
 
 export default MainPage;

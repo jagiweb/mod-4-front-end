@@ -4,12 +4,11 @@ import SideDrawer from '../SideDrawer/SideDrawer';
 import Backdrop from '../Backdrop/Backdrop';
 import Toolbar from '../Toolbar/Toolbar';
 import SignUp from './SignUp'
-import { Route,} from 'react-router-dom'
+import Profile from '../profile/Profile'
+import { Route, Link } from 'react-router-dom'
 
 
 class Navbar extends React.Component {
-
-    
     state = {
         sideDraweropen: false
     }
@@ -25,33 +24,24 @@ class Navbar extends React.Component {
         this.setState({ sideDraweropen: false })
     }
 
-    
-        
-       
-        
-    render() {
-            
-        
+    render() { 
         let backdrop 
 
         if (this.state.sideDraweropen) {
             backdrop = <Backdrop backdropClickHandler={this.backdropClickHandler} />
         }
-    
-    
-    
-    
-    
-    
-        const { username, signOut, signUp, signIn } = this.props
+        const {username, signOut, signUp, signIn, id, user, editProfile} = this.props
+        const profileURL = `/update-profile`
         return (
 					<Fragment>
-						{/* <p> {username} </p> */}
-
 						<div>
 							{this.props.username ? (
 								<button onClick={signOut}>Log Out</button>
 							) : null}
+						</div>
+
+						<div>
+							{username ? <Link to={profileURL}>My Profile</Link> : null}
 						</div>
 
 						<Route
@@ -66,21 +56,36 @@ class Navbar extends React.Component {
 						/>
 						<Toolbar drawToggleClickHandler={this.drawToggleClickHandler} />
 						<SideDrawer
-							close={this.prevstate}
 							show={this.state.sideDraweropen}
 							signIn={signIn}
 							signUp={signUp}
 							username={username}
 							signOut={signOut}
-							toggleShowSideDrawer={this.drawToggleClickHandler}
 						/>
 						{backdrop}
 					</Fragment>
+
+					// <Fragment>
+					//     <div>
+					//         <p> {username} </p>
+					//         <Link to="/">Home</Link>
+					//         -
+					//         <Link to="sign-in">Sign In</Link>
+					//         -
+					//         <Link to="sign-up">Sign Up</Link>
+					//         -
+					//         <div>{this.props.username ? <button onClick={signOut}>Log Out</button> : null}</div>
+					//         -
+					//         <Route exact path="/sign-in" component={() => <SignIn signIn={signIn}/>}/>
+
+					//         <Route exact path="/sign-up" component={() => <SignUp signUp={signUp}/>}/>
+
+					//         <Route exact path={profileURL} component={() => <Profile editProfile={editProfile}  user={user}/>}/>
+
+					//     </div>
+					// </Fragment>
 				);
-        
     }
 }
-
-
  
-  export default Navbar;
+export default Navbar;
