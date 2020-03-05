@@ -3,8 +3,8 @@ import  './DrawerToggleButton.css'
 
 const DrawerToggleButton = props => {
     return (
-			<button className='toggle-button' onClick={props.click}>
-				<div className="toggle-button-line" />
+			<button  className='toggle-button' onClick={props.click}>
+				<div  className="toggle-button-line" />
 				<div className="toggle-button-line" />
 				<div className="toggle-button-line" />
 			</button>
@@ -12,3 +12,4 @@ const DrawerToggleButton = props => {
 }
 
 export default DrawerToggleButton;
+

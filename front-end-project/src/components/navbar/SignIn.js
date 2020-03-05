@@ -20,7 +20,7 @@ class SignIn extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     API.signIn(this.state)
-        .then(json => this.props.signIn(json.username, json.token))
+        .then(json => this.props.signIn(json.username, json.token, json.user))
   }
 
   render() {
