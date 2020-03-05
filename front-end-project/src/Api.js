@@ -3,7 +3,7 @@ const baseURL = "http://localhost:3001"
 const signInURL = `${baseURL}/sign-in`
 const signUpURL = `${baseURL}/sign-up`
 const validateURL = `${baseURL}/validate`
-const apiUrl = "https://pixabay.com/api/?key=15410961-50b6ae9ee64c3859d407a7eaa&q=nature&image_type=photo&pretty=true"
+const apiUrl = "https://pixabay.com/api/?key=15410961-50b6ae9ee64c3859d407a7eaa&q=nature&image_type=photo&pretty=true&per_page=12"
 
 // // Make a post request to a given URL with a given data object as the body and return the Promise
 const post = (url, object) => {
