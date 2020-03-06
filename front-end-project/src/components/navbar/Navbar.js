@@ -75,7 +75,10 @@ class Navbar extends React.Component {
 						/>
 						<Toolbar drawToggleClickHandler={this.drawToggleClickHandler} />
 
-						<SideDrawer
+                        <SideDrawer
+                            signOut={signOut}
+                            username={username}
+                            profileURL={this.profileURL}
 							show={this.state.sideDraweropen}
 							signIn={signIn}
 							signUp={signUp}
