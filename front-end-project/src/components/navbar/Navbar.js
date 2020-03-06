@@ -34,16 +34,13 @@ class Navbar extends React.Component {
         const profileURL = `/update-profile`
         return (
 					<Fragment>
-						<div>
-							{this.props.username ? (
-								<button onClick={signOut}>Log Out</button>
-							) : null}
-						</div>
-
-						<div>
-							{username ? <Link to={profileURL}>My Profile</Link> : null}
-						</div>
-
+						
+                        {this.props.username ? (
+                            <div><button onClick={signOut}>Log Out</button></div>
+                        ) : null}
+						
+						{username ? <div><Link to={profileURL}>My Profile</Link></div> : null}
+						
 						<Route
 							exact
 							path="/sign-up"
@@ -55,6 +52,7 @@ class Navbar extends React.Component {
 							component={() => <SignIn signIn={this.props.signIn} />}
 						/>
 						<Toolbar drawToggleClickHandler={this.drawToggleClickHandler} />
+
 						<SideDrawer
 							show={this.state.sideDraweropen}
 							signIn={signIn}
@@ -64,26 +62,6 @@ class Navbar extends React.Component {
 						/>
 						{backdrop}
 					</Fragment>
-
-					// <Fragment>
-					//     <div>
-					//         <p> {username} </p>
-					//         <Link to="/">Home</Link>
-					//         -
-					//         <Link to="sign-in">Sign In</Link>
-					//         -
-					//         <Link to="sign-up">Sign Up</Link>
-					//         -
-					//         <div>{this.props.username ? <button onClick={signOut}>Log Out</button> : null}</div>
-					//         -
-					//         <Route exact path="/sign-in" component={() => <SignIn signIn={signIn}/>}/>
-
-					//         <Route exact path="/sign-up" component={() => <SignUp signUp={signUp}/>}/>
-
-					//         <Route exact path={profileURL} component={() => <Profile editProfile={editProfile}  user={user}/>}/>
-
-					//     </div>
-					// </Fragment>
 				);
     }
 }

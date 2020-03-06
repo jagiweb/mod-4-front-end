@@ -43,9 +43,7 @@ class EditProfile extends React.Component {
 
   render() {
     const {user} = this.props
-    // console.log("here")
     return(
-    // <div> {user.username}</div>
       <form onSubmit={this.handleSubmit}>
         <label>Userame:</label>
         <input type="text" name="username" placeholder={user.username} onChange={this.handleChange}/><br/>

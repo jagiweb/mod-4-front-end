@@ -58,6 +58,10 @@ const getPictures = token => {
   return get(apiUrl, token).then(response => response.json())
 }
 
+const getMorePictures = (num, token) => {
+  return get(`https://pixabay.com/api/?key=15410961-50b6ae9ee64c3859d407a7eaa&q=nature&image_type=photo&pretty=true&per_page=${num}`, token).then(response => response.json())
+}
+
 // Export the necessary functions as part of one object which we will import elsewhere
 // export default { signIn, validate, getPictures }
-export default { getPictures, signIn, signUp, validate, EditProfile }
+export default { getPictures, signIn, signUp, validate, EditProfile, getMorePictures }
