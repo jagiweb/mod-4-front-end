@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import ImageContainer from './containers/ImageContainer';
 import Navbar from './components/navbar/Navbar';
 import API from './Api';
+import './MoreImages.css'
+
 // import Api from './Api';
 
 class MainPage extends React.Component {
@@ -61,6 +63,7 @@ class MainPage extends React.Component {
             <Fragment>
                 <Navbar editProfile={this.editProfile} user={user} id={id} signIn={this.signIn} signUp={this.signUp} username={username} signOut={this.signOut}/>
                 <ImageContainer images={images}/>
+                <button className='moreImages'>show more</button>
             </Fragment>
          );
     }

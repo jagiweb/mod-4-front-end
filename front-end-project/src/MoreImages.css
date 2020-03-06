@@ -1,5 +1,23 @@
-.moreImages{
+/* .moreImages{
   color: blue;
   text-align: center;
-  opacity: 0.5;
+  opacity: 80%;
+} */
+
+
+.moreImages{
+	position:fixed;
+  width: 130px;
+  height: 35px;
+	bottom:40px;
+	right:655px;
+	background-color:#0c90;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	margin-top:22px;
 }
