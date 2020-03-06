@@ -11,7 +11,6 @@ class Profile extends Component {
 
     render() { 
         const {user, editProfile} = this.props
-        // const profileURL = `/update-profile/${user.id}`
         return ( 
             <div>
                 {this.state.edit && <EditProfile editProfile={editProfile} user={user} />}
