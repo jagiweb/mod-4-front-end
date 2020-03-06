@@ -1,5 +1,6 @@
 import React from 'react'
 import API from "../../Api"
+import './ModalForm.css'
 
 
 class SignIn extends React.Component {
@@ -24,17 +25,24 @@ class SignIn extends React.Component {
   }
 
   render() {
-    return(
-      <form onSubmit={this.handleSubmit}>
-        <label>Username:</label>
-        <input type="text" name="username" onChange={this.handleChange}/><br/>
 
-        <label>Password:</label>
-        <input type="password" name="password" onChange={this.handleChange}/><br/>
+    // const showHideModal = this.props.modal ? 'modal display-block' : 'modal display-none'
 
-        <input type="submit" value="Sign In"/>
-      </form>
-    )
+    return (
+			<div class="modal-main modal--change">
+				<form onSubmit={this.handleSubmit}>
+					<label>Username:</label>
+					<input type="text" name="username" onChange={this.handleChange} />
+					<br />
+
+					<label>Password:</label>
+					<input type="password" name="password" onChange={this.handleChange} />
+					<br />
+
+					<input type="submit" value="Sign In" />
+				</form>
+			</div>
+		);
   }
 }
 

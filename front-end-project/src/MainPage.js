@@ -60,7 +60,8 @@ class MainPage extends React.Component {
         return ( 
             <Fragment>
                 <Navbar editProfile={this.editProfile} user={user} id={id} signIn={this.signIn} signUp={this.signUp} username={username} signOut={this.signOut}/>
-                <ImageContainer images={images}/>
+                <ImageContainer images={images} />
+                {/* this.props.moadl ? <PopUp /> : null */}
             </Fragment>
          );
     }
