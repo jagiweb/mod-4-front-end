@@ -20,6 +20,11 @@
 	transform: translateX(0);
 }
 
+.side-drawer-button {
+	display: flex;
+	flex-direction: column;
+}
+
 .side-drawer-button a {
 	position: relative;
 	top: 20px;
@@ -29,11 +34,12 @@
 	text-transform: uppercase;
 	text-decoration: none;
 	text-align: center;
-	padding: 16px;
+	padding: 16px; 
 	border-radius: 15px;
-	line-height: 30px;
-	/* border-bottom: solid 1px #ddd; */
+	line-height: 30px; 
+	 border-bottom: solid 1px #ddd;
 	box-shadow: 0px 10px;	
+	padding: 16px;
 	transition: all 0.4s ease 0s;
 	color: black;
 	border-top: 2px solid rgba(0, 0, 0, 0.5);
@@ -46,7 +52,7 @@
 	border-top: 5px solid rgba(0, 0, 0, 0.5);
 }
 
-.side-drawer-button :hover {
+.side-drawer-button a:hover {
 	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%); 
 	background-color:#bab1ba; 
 	color: darkmagenta;

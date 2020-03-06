@@ -10,7 +10,17 @@ import { Route, Link } from 'react-router-dom'
 
 class Navbar extends React.Component {
     state = {
-        sideDraweropen: false
+        sideDraweropen: false,
+        modal: false
+    }
+
+
+    showModal = () => {
+        this.setState({modal: true})
+    }
+
+    hideModal = () => {
+        this.setState({ modal: false })
     }
 
     drawToggleClickHandler = () => {
@@ -44,12 +54,24 @@ class Navbar extends React.Component {
 						<Route
 							exact
 							path="/sign-up"
-							component={() => <SignUp signUp={signUp} />}
+							component={() => (
+								    this.state.modal && <SignUp
+									signUp={signUp}
+									show={this.state.modal}
+									handleClose={this.hideModal}
+								/>
+							)}
 						/>
 						<Route
 							exact
 							path="/sign-in"
-							component={() => <SignIn signIn={this.props.signIn} />}
+							component={() => (
+                                    this.state.modal && <SignIn
+                                    show={this.state.modal}
+                                    handleClose={this.hideModal}
+                                    signIn={signIn}
+                                />
+							)}
 						/>
 						<Toolbar drawToggleClickHandler={this.drawToggleClickHandler} />
 
@@ -59,8 +81,14 @@ class Navbar extends React.Component {
 							signUp={signUp}
 							username={username}
 							signOut={signOut}
+							close={this.backdropClickHandler}
+							showModal={this.showModal}
+							hideModal={this.hideModal}
 						/>
-						{backdrop}
+                        {backdrop}
+                               
+						
+				
 					</Fragment>
 				);
     }
